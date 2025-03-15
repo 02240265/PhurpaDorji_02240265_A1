@@ -1,5 +1,6 @@
-#Part A :Python Functions Assignment
 import math
+
+"""Check if a number is prime."""
 def is_prime(n):
     if n < 2:
         return False
@@ -9,9 +10,11 @@ def is_prime(n):
     return True
 
 def Calulating_the_sum_of_prime_number(start, end):
+    #Calculate the sum of all prime numbers in a given range.
     return sum(num for num in range(start, end + 1) if is_prime(num))
 
 def length_converter(value, direction):
+    #Convert length between meters and feet
     if direction == 'M':
         return round(value * 3.28084, 2)  # Meters to feet
     elif direction == 'F':
@@ -20,20 +23,29 @@ def length_converter(value, direction):
         raise ValueError("Invalid choice physco. Use 'M' for meters to feet or 'F' for feet to meters.")
 
 def counting_consonants(text):
-    consonants = "abcdefghijklmnopqrstuvwxyz"
+    #Count the number of consonants in a given text.
+    consonants = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"
     return sum(1 for char in text if char in consonants)
 
 def min_max_finder(numbers):
+    #Find the minimum and maximum values in a list of numbers.
     return min(numbers), max(numbers)
 
 def iChecking_palindrome(text):
+    #Check if a given text is a palindrome.
     cleaned_text = ''.join(char.lower() for char in text if char != ' ')
     return cleaned_text == cleaned_text[::-1]
 
-def word_counting(text):
+def word_counting(filename):
+    #Count occurrences of specific words in a given file.
     words_to_count = ["the", "was", "and"]
-    text_lower = text.lower()
-    return {word: text_lower.split().count(word) for word in words_to_count}
+    try:
+        with open(filename, 'r') as file:
+            text = file.read().lower()
+            return {word: text.split().count(word) for word in words_to_count}
+    except FileNotFoundError:
+        print("File not found. Please check the filename.")
+        return {word: 0 for word in words_to_count}
 
 def get_integer_input(prompt):
     while True:
@@ -65,11 +77,11 @@ def main():
         choice = get_integer_input("Enter your choice: ")
 
         if choice == 0:
-            print("Exit the progranm. Thank you for ur the time and Goodbye!")
+            print("Exit the progranm. Kadinchoe for ur the time la and Goodbye!")
             break
         elif choice == 1:
-            start = get_integer_input("Enter the start of the range: ")
-            end = get_integer_input("Enter the end of the range: ")
+            start = get_integer_input("Enter the starting of range: ")
+            end = get_integer_input("Enter the ending of the range: ")
             if start > end:
                 print("Invalid range. Start must be less than or equal to end.")
             else:
@@ -96,17 +108,17 @@ def main():
             text = input("Enter a string: ")
             print(f"Is palindrome: {iChecking_palindrome(text)}")
         elif choice == 6:
-            text = input("Enter a text: ")
-            word_counts = word_counting(text)
+            filename = input("Enter the filename (e.g., example.txt): ")
+            word_counts = word_counting(filename)
             for word, count in word_counts.items():
                 print(f"'{word}' occurs {count} times.")
         else:
-            print("Invalid choice. Please select a number between 0 and 6.")
+            print("Invalid choice. Please select a number from 0 to 6.")
 
         if choice != 0:
             again = input("Would you like to try another function? (y/n): ").lower()
             if again != 'y':
-                print("Exit the program. Thank you for ur time and Goodbye!")
+                print("Exit the program. Kadrinchoe la for ur time and Goodbye!")
                 break
 
 if __name__ == "__main__":

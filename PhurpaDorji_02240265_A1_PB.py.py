@@ -64,10 +64,10 @@ def main():
             elif choice == 4:
                 rock_paper_scissors_game()
             elif choice == 6:
-                print("Exiting the program. Goodbye!")
+                print("You are exiting the game. Thank you for your paprticipant my bro and Goodbye!")
                 break
             else:
-                print("Invalid choice. Please select a number between 1 and 3.")
+                print("Invalid choice. Please select a number between 2, 4 or 6.")
         except ValueError:
             print("Invalid input. Please enter a number.")
 
